@@ -156,38 +156,38 @@ export function EtsyChatbot() {
           
           {/* Left Hover / Scroll Tooltip Pill */}
           <div
-            className={`mr-3 px-3 py-1.5 rounded-xl bg-slate-900/90 dark:bg-zinc-800/90 text-white text-xs font-semibold whitespace-nowrap shadow-xl border border-slate-700/60 flex items-center gap-1.5 transition-all duration-300 ${
+            className={`mr-2.5 px-2.5 py-1 rounded-xl bg-slate-900/90 dark:bg-zinc-800/90 text-white text-[11px] font-semibold whitespace-nowrap shadow-xl border border-slate-700/60 flex items-center gap-1.5 transition-all duration-300 ${
               isScrolling
                 ? 'opacity-100 translate-x-0 scale-100'
                 : 'opacity-0 translate-x-2 scale-95 group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100 pointer-events-none'
             }`}
           >
             <span>Etsy AI Assistant</span>
-            <span className="font-cursive text-amber-300 text-sm font-bold">Ask AI ✨</span>
+            <span className="font-cursive text-amber-300 text-xs font-bold">Ask AI ✨</span>
           </div>
 
-          {/* Circle FAB Button */}
+          {/* Compact Circle FAB Button */}
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-orange-500 via-amber-500 to-orange-600 text-white shadow-2xl shadow-orange-500/50 flex items-center justify-center border-2 border-white/40 dark:border-white/20 transition-all duration-300 cursor-pointer ${
+            className={`relative w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-orange-500 via-amber-500 to-orange-600 text-white shadow-lg shadow-orange-500/40 flex items-center justify-center border-2 border-white/40 dark:border-white/20 transition-all duration-300 cursor-pointer ${
               isScrolling
-                ? 'scale-110 -translate-y-2 rotate-12 shadow-orange-500/80 shadow-2xl ring-4 ring-orange-400/40'
-                : 'animate-float-slow hover:scale-110 hover:-translate-y-1 active:scale-95'
+                ? 'scale-105 -translate-y-1 rotate-6 shadow-orange-500/60 shadow-xl ring-2 ring-orange-400/40'
+                : 'animate-float-slow hover:scale-105 hover:-translate-y-0.5 active:scale-95'
             }`}
             aria-label="Open Etsy AI Chatbot"
           >
             {/* Ambient Pulsing Radar Ring */}
-            <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 opacity-60 blur-xs animate-ring-pulse pointer-events-none" />
+            <span className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 opacity-50 blur-xs animate-ring-pulse pointer-events-none" />
 
             {/* AI Assistant Icon */}
-            <AIAssistantIcon size="lg" pulse={false} className="relative z-10" />
+            <AIAssistantIcon size="md" pulse={false} className="relative z-10" />
 
             {/* Unread Indicator Badge */}
             {hasUnread && (
-              <span className="absolute top-0 right-0 flex h-3.5 w-3.5 z-20">
+              <span className="absolute -top-0.5 -right-0.5 flex h-3 w-3 z-20">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80"></span>
-                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-white dark:border-zinc-900"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400 border-2 border-white dark:border-zinc-900"></span>
               </span>
             )}
           </button>

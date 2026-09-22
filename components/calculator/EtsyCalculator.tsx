@@ -12,8 +12,10 @@ import { CalculatorInput, CurrencyCode, ProductType } from '@/types/etsy';
 import { formatCurrency, formatPercentClean } from '@/lib/utils';
 import { ArrowRight, Download, Package, TrendingUp } from 'lucide-react';
 
+import { CountryFeesChartSection } from './CountryFeesChartSection';
+
+// Production SaaS Footer
 import { Footer } from './Footer';
-import { EtsyChatbot } from '@/components/chatbot/EtsyChatbot';
 
 export function EtsyCalculator() {
 
@@ -90,19 +92,19 @@ export function EtsyCalculator() {
         <HeroSection />
 
         {/* 1. TOP SEGMENTED CONTROL: PRODUCT TYPE */}
-        <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm rounded-2xl border border-white/90 dark:border-zinc-800/80 p-2 shadow-sm card-shadow transition-colors duration-200">
-          <div className="grid grid-cols-2 gap-2">
+        <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm rounded-2xl border border-white/90 dark:border-zinc-800 p-2.5 shadow-sm card-shadow transition-colors duration-200">
+          <div className="grid grid-cols-2 gap-3">
             <button
               type="button"
               id="btn-digital-product"
               onClick={() => handleProductTypeChange('digital')}
-              className={`relative flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer select-none overflow-hidden ${
+              className={`relative flex items-center justify-center gap-3 py-4 px-5 rounded-xl text-base sm:text-lg font-bold transition-all duration-200 cursor-pointer select-none overflow-hidden ${
                 isDigital
                   ? 'bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 text-white shadow-lg shadow-orange-500/25'
-                  : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-zinc-800/60'
+                  : 'bg-transparent text-slate-600 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-zinc-800/60'
               }`}
             >
-              <Download className={`h-4 w-4 ${isDigital ? 'text-white' : ''}`} />
+              <Download className={`h-5 w-5 ${isDigital ? 'text-white' : ''}`} />
               <span>Digital Product</span>
               {isDigital && (
                 <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 animate-[shine_2s_ease_infinite]" />
@@ -113,13 +115,13 @@ export function EtsyCalculator() {
               type="button"
               id="btn-physical-product"
               onClick={() => handleProductTypeChange('physical')}
-              className={`relative flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer select-none overflow-hidden ${
+              className={`relative flex items-center justify-center gap-3 py-4 px-5 rounded-xl text-base sm:text-lg font-bold transition-all duration-200 cursor-pointer select-none overflow-hidden ${
                 !isDigital
                   ? 'bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 text-white shadow-lg shadow-orange-500/25'
-                  : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-zinc-800/60'
+                  : 'bg-transparent text-slate-600 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-zinc-800/60'
               }`}
             >
-              <Package className={`h-4 w-4 ${!isDigital ? 'text-white' : ''}`} />
+              <Package className={`h-5 w-5 ${!isDigital ? 'text-white' : ''}`} />
               <span>Physical Product</span>
               {!isDigital && (
                 <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 animate-[shine_2s_ease_infinite]" />
@@ -129,7 +131,7 @@ export function EtsyCalculator() {
         </div>
 
         {/* 2. TWO-COLUMN CALCULATOR & RESULTS */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
           {/* Left: Input Form (7 cols) */}
           <div className="lg:col-span-7">
             <CalculatorForm
@@ -151,18 +153,21 @@ export function EtsyCalculator() {
         </div>
 
         {/* Bottom trust strip */}
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-2 pb-4">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-3 pb-2">
           {[
             { icon: '🔒', text: 'No data stored. Fully private.' },
             { icon: '⚡', text: 'Live calculations as you type' },
             { icon: '📊', text: '20+ countries supported' },
           ].map((item) => (
-            <div key={item.text} className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-zinc-400 font-medium">
-              <span>{item.icon}</span>
+            <div key={item.text} className="flex items-center gap-2 text-sm text-slate-500 dark:text-zinc-400 font-semibold">
+              <span className="text-base">{item.icon}</span>
               <span>{item.text}</span>
             </div>
           ))}
         </div>
+
+        {/* 3. NEW SECTION: ETSY FEES COMPARISON CHART & TABLE (US, UK, Canada, Pakistan, India, etc.) */}
+        <CountryFeesChartSection />
       </main>
 
       {/* How It Works Information Modal */}
@@ -177,9 +182,6 @@ export function EtsyCalculator() {
         onReset={handleReset}
         onOpenHowItWorks={() => setIsHowItWorksOpen(true)}
       />
-
-      {/* 100% Client-Side Master AI Chatbot Assistant */}
-      <EtsyChatbot />
 
 
 

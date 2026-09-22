@@ -22,12 +22,12 @@ interface CalculatorFormProps {
   onCountryChange: (countryCode: string, defaultCurrency: CurrencyCode) => void;
 }
 
-/** Shared label style */
-const labelCls = 'text-xs font-semibold text-slate-600 dark:text-zinc-300 block mb-1.5';
+/** Shared label style (Large, Clean & Legible) */
+const labelCls = 'text-sm font-bold text-slate-800 dark:text-zinc-100 block mb-2';
 
-/** Shared input style */
+/** Shared input style (Comfortable height & font size) */
 const inputCls =
-  'h-11 w-full rounded-xl border border-slate-200 dark:border-zinc-700/80 bg-white/80 dark:bg-zinc-800/80 px-3 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none input-field transition-smooth placeholder:text-slate-300 dark:placeholder:text-zinc-500';
+  'h-12 w-full rounded-xl border border-slate-200 dark:border-zinc-700/80 bg-white/90 dark:bg-zinc-800/90 px-3.5 text-base font-semibold text-slate-900 dark:text-white focus:outline-none input-field transition-smooth placeholder:text-slate-300 dark:placeholder:text-zinc-500';
 
 /** Shared section divider */
 function SectionDivider({
@@ -43,16 +43,20 @@ function SectionDivider({
 }) {
   return (
     <div className="flex items-center justify-between pt-1">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         {icon && (
-          <div className="h-6 w-6 rounded-lg bg-orange-50 dark:bg-orange-950/50 flex items-center justify-center text-orange-600 dark:text-orange-400">
+          <div className="h-8 w-8 rounded-xl bg-orange-100/80 dark:bg-orange-950/60 flex items-center justify-center text-orange-600 dark:text-orange-400 flex-shrink-0 shadow-xs">
             {icon}
           </div>
         )}
         <div>
-          <h3 className="text-xs font-bold uppercase tracking-widest text-slate-700 dark:text-zinc-200">{title}</h3>
+          <h3 className="font-cursive text-2xl sm:text-3xl font-bold text-orange-600 dark:text-orange-400 leading-none tracking-wide">
+            {title}
+          </h3>
           {subtitle && (
-            <p className="text-[10px] text-slate-400 dark:text-zinc-400 font-medium mt-0.5 leading-none">{subtitle}</p>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 font-medium mt-1 leading-normal">
+              {subtitle}
+            </p>
           )}
         </div>
       </div>
@@ -101,14 +105,14 @@ export function CalculatorForm({
           icon={<Tag className="h-3.5 w-3.5" />}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* Regular Price */}
           <div>
             <label htmlFor="regular-price-input" className={labelCls}>
               Regular Price
             </label>
             <div className="relative flex items-center">
-              <span className="absolute left-3 text-slate-400 dark:text-zinc-400 text-sm font-bold pointer-events-none select-none">
+              <span className="absolute left-3.5 text-slate-400 dark:text-zinc-400 text-base font-bold pointer-events-none select-none">
                 {currencySymbol}
               </span>
               <input
@@ -122,18 +126,18 @@ export function CalculatorForm({
                   const v = parseFloat(e.target.value);
                   onInputChange('regularPrice', isNaN(v) || v < 0 ? 0 : v);
                 }}
-                className={`${inputCls} pl-8 pr-3`}
+                className={`${inputCls} pl-9 pr-3.5`}
               />
             </div>
           </div>
 
           {/* Sale Discount */}
           <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <label htmlFor="discount-input" className="text-xs font-semibold text-slate-600 dark:text-zinc-300">
+            <div className="flex items-center justify-between mb-2">
+              <label htmlFor="discount-input" className="text-sm font-bold text-slate-800 dark:text-zinc-100">
                 Sale Discount
               </label>
-              <span className="text-[10px] text-slate-400 dark:text-zinc-400 font-mono bg-slate-50 dark:bg-zinc-800 px-1.5 py-0.5 rounded">0–100%</span>
+              <span className="text-xs text-slate-500 dark:text-zinc-400 font-mono bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-semibold">0–100%</span>
             </div>
             <div className="relative flex items-center">
               <input
@@ -148,24 +152,24 @@ export function CalculatorForm({
                   const v = parseFloat(e.target.value);
                   onInputChange('discount', isNaN(v) ? 0 : Math.min(100, Math.max(0, v)));
                 }}
-                className={`${inputCls} px-3 pr-8`}
+                className={`${inputCls} px-3.5 pr-9`}
               />
-              <span className="absolute right-3 text-slate-400 dark:text-zinc-400 text-sm font-semibold pointer-events-none select-none">
+              <span className="absolute right-3.5 text-slate-400 dark:text-zinc-400 text-base font-semibold pointer-events-none select-none">
                 %
               </span>
             </div>
           </div>
 
-          {/* Calculated Sale Price (Read-only) */}
+          {/* Calculated Sale Price (Read-only - Green Label) */}
           <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <label className="text-xs font-semibold text-slate-600 dark:text-zinc-300">Sale Price</label>
-              <span className="inline-flex items-center gap-0.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
-                <Sparkles className="h-2.5 w-2.5 fill-emerald-500 text-emerald-500" />
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-sm font-bold text-emerald-600 dark:text-emerald-400">Sale Price</label>
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200/80 dark:border-emerald-800/80">
+                <Sparkles className="h-3 w-3 fill-emerald-500 text-emerald-500" />
                 Auto
               </span>
             </div>
-            <div className="h-11 w-full rounded-xl border border-emerald-200/60 dark:border-emerald-800/60 bg-gradient-to-r from-emerald-50/80 to-teal-50/80 dark:from-emerald-950/40 dark:to-teal-950/40 px-3 flex items-center text-sm font-black text-emerald-800 dark:text-emerald-300 select-all font-mono">
+            <div className="h-12 w-full rounded-xl border border-emerald-300/80 dark:border-emerald-700/80 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/50 px-3.5 flex items-center text-base font-black text-emerald-700 dark:text-emerald-300 select-all font-mono shadow-xs">
               {formatCurrency(salePrice, input.currency)}
             </div>
           </div>
@@ -175,14 +179,14 @@ export function CalculatorForm({
       {/* ═══════════════════════════════════════
           2. ETSY SETTINGS
       ═══════════════════════════════════════ */}
-      <div className="space-y-4 pt-1 border-t border-slate-100/80 dark:border-zinc-800/80">
+      <div className="space-y-4 pt-2 border-t border-slate-100/80 dark:border-zinc-800/80">
         <SectionDivider
           title="Etsy Settings"
           subtitle="Shop location & marketplace rules"
-          icon={<Globe className="h-3.5 w-3.5" />}
+          icon={<Globe className="h-4 w-4" />}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Country Selector */}
           <div>
             <label htmlFor="country-select" className={labelCls}>
@@ -192,7 +196,7 @@ export function CalculatorForm({
               id="country-select"
               value={input.country}
               onChange={handleCountrySelect}
-              className="h-11 w-full rounded-xl border border-slate-200 dark:border-zinc-700/80 bg-white/80 dark:bg-zinc-800/80 px-3 text-xs sm:text-sm font-semibold text-slate-800 dark:text-zinc-100 focus:outline-none input-field cursor-pointer transition-smooth"
+              className="h-12 w-full rounded-xl border border-slate-200 dark:border-zinc-700/80 bg-white/90 dark:bg-zinc-800/90 px-3.5 text-sm sm:text-base font-semibold text-slate-800 dark:text-zinc-100 focus:outline-none input-field cursor-pointer transition-smooth"
             >
               {COUNTRY_FEES.map((c) => (
                 <option key={c.code} value={c.code} className="dark:bg-zinc-900 dark:text-white">
@@ -205,12 +209,12 @@ export function CalculatorForm({
           {/* Listing Type Toggle */}
           <div>
             <label className={labelCls}>Listing Type</label>
-            <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-100/80 dark:bg-zinc-800/80 rounded-xl border border-slate-200/60 dark:border-zinc-700/60 h-11 items-center">
+            <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100/80 dark:bg-zinc-800/80 rounded-xl border border-slate-200/60 dark:border-zinc-700/60 h-12 items-center">
               <button
                 type="button"
                 id="listing-type-paid"
                 onClick={() => onInputChange('listingType', 'paid')}
-                className={`h-9 flex items-center justify-center text-xs font-bold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`h-10 flex items-center justify-center text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 cursor-pointer ${
                   input.listingType === 'paid'
                     ? 'bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-sm border border-slate-200/60 dark:border-zinc-600'
                     : 'text-slate-500 dark:text-zinc-400 hover:text-slate-800 dark:hover:text-white'
@@ -222,7 +226,7 @@ export function CalculatorForm({
                 type="button"
                 id="listing-type-free"
                 onClick={() => onInputChange('listingType', 'free')}
-                className={`h-9 flex items-center justify-center text-xs font-bold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`h-10 flex items-center justify-center text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 cursor-pointer ${
                   input.listingType === 'free'
                     ? 'bg-white dark:bg-zinc-700 text-emerald-700 dark:text-emerald-400 shadow-sm border border-emerald-200/60 dark:border-emerald-700/60'
                     : 'text-slate-500 dark:text-zinc-400 hover:text-slate-800 dark:hover:text-white'
@@ -235,19 +239,19 @@ export function CalculatorForm({
         </div>
 
         {/* Offsite Ads Toggle */}
-        <div className="p-4 rounded-xl bg-gradient-to-r from-amber-50/80 to-orange-50/60 dark:from-amber-950/30 dark:to-orange-950/20 border border-amber-100 dark:border-amber-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="space-y-0.5">
+        <div className="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-amber-50/80 to-orange-50/60 dark:from-amber-950/30 dark:to-orange-950/20 border border-amber-200/80 dark:border-amber-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <ExternalLink className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-              <span className="text-xs font-bold text-slate-900 dark:text-white">Etsy Offsite Ads</span>
+              <ExternalLink className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+              <span className="text-sm font-bold text-slate-900 dark:text-white">Etsy Offsite Ads</span>
               {input.offsiteAdsEnabled && (
-                <span className="inline-flex items-center gap-1 text-[10px] font-mono text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/50 px-2 py-0.5 rounded-full border border-amber-200 dark:border-amber-800 font-bold">
-                  <Lock className="h-2.5 w-2.5" /> {(offsiteRate * 100).toFixed(0)}% Read-Only
+                <span className="inline-flex items-center gap-1 text-xs font-mono text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/60 px-2.5 py-0.5 rounded-full border border-amber-300 dark:border-amber-800 font-bold">
+                  <Lock className="h-3 w-3" /> {(offsiteRate * 100).toFixed(0)}% Read-Only
                 </span>
               )}
             </div>
-            <p className="text-[11px] text-slate-500 dark:text-zinc-400 pl-5.5">
-              Etsy&apos;s locked fee on sales from external search or social ads
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 pl-6 leading-relaxed">
+              Etsy&apos;s locked fee on sales from external Google, Pinterest or social ads
             </p>
           </div>
 
@@ -297,26 +301,26 @@ export function CalculatorForm({
           3. PHYSICAL COSTS & SHIPPING
       ═══════════════════════════════════════ */}
       {isPhysical && (
-        <div className="space-y-4 pt-1 border-t border-slate-100/80 dark:border-zinc-800/80 animate-in fade-in duration-200">
+        <div className="space-y-5 pt-2 border-t border-slate-100/80 dark:border-zinc-800/80 animate-in fade-in duration-200">
           <SectionDivider
             title="Physical Costs & Shipping"
             subtitle="Manufacturing, packaging, and postage expenses"
-            icon={<Truck className="h-3.5 w-3.5" />}
+            icon={<Truck className="h-4 w-4" />}
             badge={
-              <span className="text-[10px] font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-1 rounded-full border border-amber-200/60 dark:border-amber-800/60">
+              <span className="text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 px-3 py-1 rounded-full border border-amber-200/80 dark:border-amber-800/80">
                 Physical Only
               </span>
             }
           />
 
           {/* Product & Packaging Cost */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label htmlFor="product-cost-input" className={labelCls}>
                 Product / Manufacturing Cost
               </label>
               <div className="relative flex items-center">
-                <span className="absolute left-3 text-slate-400 dark:text-zinc-400 text-sm font-bold pointer-events-none select-none">
+                <span className="absolute left-3.5 text-slate-400 dark:text-zinc-400 text-base font-bold pointer-events-none select-none">
                   {currencySymbol}
                 </span>
                 <input
@@ -330,7 +334,7 @@ export function CalculatorForm({
                     const v = parseFloat(e.target.value);
                     onInputChange('productCost', isNaN(v) || v < 0 ? 0 : v);
                   }}
-                  className={`${inputCls} pl-8 pr-3`}
+                  className={`${inputCls} pl-9 pr-3.5`}
                 />
               </div>
             </div>
@@ -340,7 +344,7 @@ export function CalculatorForm({
                 Packaging Cost
               </label>
               <div className="relative flex items-center">
-                <span className="absolute left-3 text-slate-400 dark:text-zinc-400 text-sm font-bold pointer-events-none select-none">
+                <span className="absolute left-3.5 text-slate-400 dark:text-zinc-400 text-base font-bold pointer-events-none select-none">
                   {currencySymbol}
                 </span>
                 <input
@@ -354,25 +358,25 @@ export function CalculatorForm({
                     const v = parseFloat(e.target.value);
                     onInputChange('packagingCost', isNaN(v) || v < 0 ? 0 : v);
                   }}
-                  className={`${inputCls} pl-8 pr-3`}
+                  className={`${inputCls} pl-9 pr-3.5`}
                 />
               </div>
             </div>
           </div>
 
           {/* Shipping Charged vs Actual */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-            <div className="p-3.5 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 space-y-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-4 rounded-xl bg-orange-50/40 dark:bg-orange-950/20 border border-orange-100/80 dark:border-orange-900/40 space-y-2">
               <div>
-                <label htmlFor="shipping-charged-input" className="text-xs font-bold text-slate-800 dark:text-zinc-200 block">
+                <label htmlFor="shipping-charged-input" className="text-sm font-bold text-slate-900 dark:text-white block">
                   Shipping Charged to Customer
                 </label>
-                <p className="text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5">
-                  Revenue from buyer (6.5% fee applies)
+                <p className="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+                  Revenue collected from buyer (6.5% transaction fee applies)
                 </p>
               </div>
               <div className="relative flex items-center">
-                <span className="absolute left-3 text-slate-400 dark:text-zinc-400 text-sm font-bold pointer-events-none select-none">
+                <span className="absolute left-3.5 text-slate-400 dark:text-zinc-400 text-base font-bold pointer-events-none select-none">
                   {currencySymbol}
                 </span>
                 <input
@@ -386,22 +390,22 @@ export function CalculatorForm({
                     const v = parseFloat(e.target.value);
                     onInputChange('shippingCharged', isNaN(v) || v < 0 ? 0 : v);
                   }}
-                  className={`${inputCls} pl-8 pr-3`}
+                  className={`${inputCls} pl-9 pr-3.5`}
                 />
               </div>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-rose-50/50 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900/50 space-y-2">
+            <div className="p-4 rounded-xl bg-rose-50/40 dark:bg-rose-950/20 border border-rose-100/80 dark:border-rose-900/40 space-y-2">
               <div>
-                <label htmlFor="actual-shipping-input" className="text-xs font-bold text-slate-800 dark:text-zinc-200 block">
+                <label htmlFor="actual-shipping-input" className="text-sm font-bold text-slate-900 dark:text-white block">
                   Actual Shipping Cost
                 </label>
-                <p className="text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5">
-                  Postage label expense paid out of pocket
+                <p className="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+                  Postage label cost paid out of pocket (USPS, Courier, etc.)
                 </p>
               </div>
               <div className="relative flex items-center">
-                <span className="absolute left-3 text-slate-400 dark:text-zinc-400 text-sm font-bold pointer-events-none select-none">
+                <span className="absolute left-3.5 text-slate-400 dark:text-zinc-400 text-base font-bold pointer-events-none select-none">
                   {currencySymbol}
                 </span>
                 <input
@@ -415,18 +419,18 @@ export function CalculatorForm({
                     const v = parseFloat(e.target.value);
                     onInputChange('actualShippingCost', isNaN(v) || v < 0 ? 0 : v);
                   }}
-                  className={`${inputCls} pl-8 pr-3`}
+                  className={`${inputCls} pl-9 pr-3.5`}
                 />
               </div>
             </div>
           </div>
 
           {/* Etsy Ads for Physical Products */}
-          <div className="p-4 rounded-xl bg-orange-50/60 dark:bg-orange-950/30 border border-orange-100 dark:border-orange-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="space-y-0.5">
-              <span className="text-xs font-bold text-slate-900 dark:text-white block">Etsy Ads (On-Site)</span>
-              <p className="text-[11px] text-slate-500 dark:text-zinc-400">
-                Estimated ad spend per unit sold
+          <div className="p-4 sm:p-5 rounded-xl bg-orange-50/60 dark:bg-orange-950/30 border border-orange-100 dark:border-orange-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <span className="text-sm font-bold text-slate-900 dark:text-white block">Etsy Ads (On-Site)</span>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-zinc-400">
+                Estimated advertising cost per item sold
               </p>
             </div>
 
@@ -435,7 +439,7 @@ export function CalculatorForm({
                 <button
                   type="button"
                   onClick={() => onInputChange('etsyAdsEnabled', false)}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all duration-150 cursor-pointer ${
+                  className={`px-3.5 py-1.5 text-xs sm:text-sm font-bold rounded-lg transition-all duration-150 cursor-pointer ${
                     !input.etsyAdsEnabled
                       ? 'bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-sm'
                       : 'text-slate-500 dark:text-zinc-400'
@@ -446,7 +450,7 @@ export function CalculatorForm({
                 <button
                   type="button"
                   onClick={() => onInputChange('etsyAdsEnabled', true)}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all duration-150 cursor-pointer ${
+                  className={`px-3.5 py-1.5 text-xs sm:text-sm font-bold rounded-lg transition-all duration-150 cursor-pointer ${
                     input.etsyAdsEnabled
                       ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm'
                       : 'text-slate-500 dark:text-zinc-400'
@@ -457,8 +461,8 @@ export function CalculatorForm({
               </div>
 
               {input.etsyAdsEnabled && (
-                <div className="relative flex items-center w-28 animate-in fade-in duration-150">
-                  <span className="absolute left-2.5 text-slate-400 dark:text-zinc-400 text-xs font-bold pointer-events-none select-none">
+                <div className="relative flex items-center w-32 animate-in fade-in duration-150">
+                  <span className="absolute left-3 text-slate-400 dark:text-zinc-400 text-sm font-bold pointer-events-none select-none">
                     {currencySymbol}
                   </span>
                   <input
@@ -471,7 +475,7 @@ export function CalculatorForm({
                       const v = parseFloat(e.target.value);
                       onInputChange('etsyAdsCost', isNaN(v) || v < 0 ? 0 : v);
                     }}
-                    className="h-9 w-full rounded-xl border border-orange-200 dark:border-orange-800 bg-white dark:bg-zinc-800 pl-7 pr-2 text-xs font-bold text-slate-900 dark:text-white focus:outline-none input-field"
+                    className="h-10 w-full rounded-xl border border-orange-200 dark:border-orange-800 bg-white dark:bg-zinc-800 pl-8 pr-2.5 text-sm font-bold text-slate-900 dark:text-white focus:outline-none input-field"
                   />
                 </div>
               )}
@@ -483,44 +487,44 @@ export function CalculatorForm({
       {/* ═══════════════════════════════════════
           4. COMPACT ETSY FEE SUMMARY STRIP
       ═══════════════════════════════════════ */}
-      <div className="pt-1 border-t border-slate-100/80 dark:border-zinc-800/80 space-y-3">
+      <div className="pt-2 border-t border-slate-100/80 dark:border-zinc-800/80 space-y-3.5">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-zinc-300 flex items-center gap-1.5">
+          <span className="font-cursive text-xl sm:text-2xl font-bold text-orange-600 dark:text-orange-400 flex items-center gap-2">
             <span>{country.flag}</span>
             <span>{country.name} Etsy Marketplace Fees</span>
           </span>
-          <span className="flex items-center gap-1 font-mono text-[10px] text-slate-400 dark:text-zinc-400 bg-slate-50 dark:bg-zinc-800/80 px-2 py-1 rounded-lg border border-slate-100 dark:border-zinc-700/80">
-            <Lock className="h-2.5 w-2.5" /> System Rates
+          <span className="flex items-center gap-1 font-mono text-xs text-slate-400 dark:text-zinc-400 bg-slate-50 dark:bg-zinc-800/80 px-2.5 py-1 rounded-lg border border-slate-100 dark:border-zinc-700/80">
+            <Lock className="h-3 w-3" /> System Rates
           </span>
         </div>
 
-        <div className={`grid grid-cols-1 sm:${country.regulatoryFeeRate ? 'grid-cols-4' : 'grid-cols-3'} gap-2.5`}>
+        <div className={`grid grid-cols-1 sm:${country.regulatoryFeeRate ? 'grid-cols-4' : 'grid-cols-3'} gap-3`}>
           {/* 1. Transaction Fee */}
-          <div className="p-3 rounded-xl bg-slate-50/80 dark:bg-zinc-800/60 border border-slate-200/60 dark:border-zinc-700/60 text-center">
-            <span className="text-[10px] text-slate-400 dark:text-zinc-400 font-semibold block mb-0.5">
+          <div className="p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
+            <span className="text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
               Transaction Fee
             </span>
-            <span className="font-mono font-black text-xs text-slate-800 dark:text-zinc-200">
+            <span className="font-mono font-black text-sm sm:text-base text-slate-900 dark:text-zinc-100">
               {(ETSY_TRANSACTION_FEE_RATE * 100).toFixed(1)}% 🔒
             </span>
           </div>
 
           {/* 2. Payment Processing Fee */}
-          <div className="p-3 rounded-xl bg-slate-50/80 dark:bg-zinc-800/60 border border-slate-200/60 dark:border-zinc-700/60 text-center">
-            <span className="text-[10px] text-slate-400 dark:text-zinc-400 font-semibold block mb-0.5">
+          <div className="p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
+            <span className="text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
               Processing ({country.code})
             </span>
-            <span className="font-mono font-black text-xs text-slate-800 dark:text-zinc-200">
-              {country.paymentProcessingRate}% + {currencySymbol}{country.paymentProcessingFixed.toFixed(2)} {country.defaultCurrency} 🔒
+            <span className="font-mono font-black text-sm sm:text-base text-slate-900 dark:text-zinc-100">
+              {country.paymentProcessingRate}% + {currencySymbol}{country.paymentProcessingFixed.toFixed(2)}
             </span>
           </div>
 
           {/* 3. Listing Fee */}
-          <div className="p-3 rounded-xl bg-slate-50/80 dark:bg-zinc-800/60 border border-slate-200/60 dark:border-zinc-700/60 text-center">
-            <span className="text-[10px] text-slate-400 dark:text-zinc-400 font-semibold block mb-0.5">
+          <div className="p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
+            <span className="text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
               Listing Fee
             </span>
-            <span className="font-mono font-black text-xs text-slate-800 dark:text-zinc-200">
+            <span className="font-mono font-black text-sm sm:text-base text-slate-900 dark:text-zinc-100">
               {input.listingType === 'free'
                 ? 'FREE ($0.00)'
                 : `${currencySymbol}${country.listingFeeFixed.toFixed(2)} ${country.defaultCurrency}`}{' '}
@@ -530,11 +534,11 @@ export function CalculatorForm({
 
           {/* 4. Regulatory Operating Fee (if applicable) */}
           {country.regulatoryFeeRate && (
-            <div className="p-3 rounded-xl bg-slate-50/80 dark:bg-zinc-800/60 border border-slate-200/60 dark:border-zinc-700/60 text-center">
-              <span className="text-[10px] text-slate-400 dark:text-zinc-400 font-semibold block mb-0.5">
+            <div className="p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
+              <span className="text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
                 Regulatory Fee
               </span>
-              <span className="font-mono font-black text-xs text-slate-800 dark:text-zinc-200">
+              <span className="font-mono font-black text-sm sm:text-base text-amber-600 dark:text-amber-400">
                 {country.regulatoryFeeRate}% 🔒
               </span>
             </div>

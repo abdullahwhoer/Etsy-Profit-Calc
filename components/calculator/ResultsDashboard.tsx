@@ -104,23 +104,22 @@ export function ResultsDashboard({
         <div className="relative">
           {/* Label + Copy button */}
           <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-zinc-400">
+            <div className="flex items-center gap-2.5">
+              <span className="text-sm font-bold uppercase tracking-wider text-zinc-300">
                 Net Profit
               </span>
-              <span className="font-cursive text-amber-300 font-bold text-sm tracking-wide -rotate-1">
+              <span className="font-cursive text-amber-300 font-bold text-base tracking-wide -rotate-1">
                 Live ✨
               </span>
               {isProfitable && (
-
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-full">
-                  <TrendingUp className="h-2.5 w-2.5" />
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-1 rounded-full">
+                  <TrendingUp className="h-3 w-3" />
                   Profitable
                 </span>
               )}
               {isLoss && (
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-rose-400 bg-rose-500/15 border border-rose-500/30 px-2 py-0.5 rounded-full">
-                  <TrendingDown className="h-2.5 w-2.5" />
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-rose-400 bg-rose-500/15 border border-rose-500/30 px-2.5 py-1 rounded-full">
+                  <TrendingDown className="h-3 w-3" />
                   Loss
                 </span>
               )}
@@ -130,17 +129,17 @@ export function ResultsDashboard({
               type="button"
               id="copy-summary-btn"
               onClick={handleCopySummary}
-              className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-zinc-400 hover:text-white bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-150 cursor-pointer border border-white/10"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-150 cursor-pointer border border-white/15"
               title="Copy estimate summary"
             >
               {copied ? (
                 <>
-                  <CheckCircle className="h-3 w-3 text-emerald-400" />
-                  <span className="text-emerald-400">Copied!</span>
+                  <CheckCircle className="h-3.5 w-3.5 text-emerald-400" />
+                  <span className="text-emerald-400 font-bold">Copied!</span>
                 </>
               ) : (
                 <>
-                  <Copy className="h-3 w-3" />
+                  <Copy className="h-3.5 w-3.5" />
                   <span>Copy</span>
                 </>
               )}
@@ -148,9 +147,9 @@ export function ResultsDashboard({
           </div>
 
           {/* Large Net Profit Amount */}
-          <div className="mt-4 mb-3">
+          <div className="mt-5 mb-4">
             <span
-              className={`text-5xl sm:text-6xl font-black tracking-tight font-mono leading-none ${
+              className={`text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight font-mono leading-none ${
                 isProfitable
                   ? 'text-emerald-400 profit-glow'
                   : isLoss
@@ -163,28 +162,28 @@ export function ResultsDashboard({
           </div>
 
           {/* Profit Margin Badge + Fee Rate */}
-          <div className="flex items-center gap-2.5 flex-wrap">
+          <div className="flex items-center gap-3 flex-wrap">
             <span
-              className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full border font-mono ${marginBg} ${marginColor}`}
+              className={`inline-flex items-center gap-1.5 text-sm font-bold px-3.5 py-1.5 rounded-full border font-mono ${marginBg} ${marginColor}`}
             >
               {isProfitable ? (
-                <TrendingUp className="h-3 w-3" />
+                <TrendingUp className="h-3.5 w-3.5" />
               ) : isLoss ? (
-                <TrendingDown className="h-3 w-3" />
+                <TrendingDown className="h-3.5 w-3.5" />
               ) : (
-                <Minus className="h-3 w-3" />
+                <Minus className="h-3.5 w-3.5" />
               )}
               {formatPercentClean(result.profitMargin)} margin
             </span>
-            <span className="text-xs text-zinc-400 font-mono">
+            <span className="text-sm text-zinc-300 font-mono">
               {formatPercentClean(result.effectiveFeeRate)} in fees
             </span>
           </div>
 
           {/* Distribution Bar */}
           {result.totalCustomerPayment > 0 && (
-            <div className="mt-4 space-y-1.5">
-              <div className="h-2 rounded-full overflow-hidden bg-white/10 flex">
+            <div className="mt-5 space-y-2">
+              <div className="h-2.5 rounded-full overflow-hidden bg-white/10 flex">
                 {profitShare > 0 && (
                   <div
                     className="bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500"
@@ -204,10 +203,10 @@ export function ResultsDashboard({
                   />
                 )}
               </div>
-              <div className="flex items-center gap-3 text-[10px] font-mono text-zinc-400">
-                <span className="flex items-center gap-1"><span className="inline-block w-2 h-2 rounded-full bg-emerald-500"></span> Profit</span>
-                <span className="flex items-center gap-1"><span className="inline-block w-2 h-2 rounded-full bg-orange-500"></span> Etsy Fees</span>
-                {isPhysical && <span className="flex items-center gap-1"><span className="inline-block w-2 h-2 rounded-full bg-zinc-500"></span> Your Costs</span>}
+              <div className="flex items-center gap-4 text-xs font-mono text-zinc-300">
+                <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Profit</span>
+                <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full bg-orange-500"></span> Etsy Fees</span>
+                {isPhysical && <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full bg-zinc-500"></span> Your Costs</span>}
               </div>
             </div>
           )}
@@ -215,49 +214,49 @@ export function ResultsDashboard({
       </div>
 
       {/* ══════════════════════════════════
-          SUMMARY PANEL
+          SUMMARY PANEL (Clean, Larger Fonts & Generous Spacing)
       ══════════════════════════════════ */}
-      <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm p-6 sm:p-7 space-y-5 border-t border-slate-100/80 dark:border-zinc-800/80 transition-colors duration-200">
+      <div className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md p-6 sm:p-8 space-y-6 border-t border-slate-100 dark:border-zinc-800 transition-colors duration-200">
 
         {/* Quick Summary */}
-        <div className="space-y-1">
+        <div className="space-y-1.5">
           {/* Revenue */}
-          <div className="flex items-center justify-between py-2.5 border-b border-slate-100/80 dark:border-zinc-800/80">
-            <span className="text-sm text-slate-500 dark:text-zinc-400 font-medium">Revenue</span>
-            <span className="font-mono font-bold text-slate-900 dark:text-white text-sm">
+          <div className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-zinc-800">
+            <span className="text-sm sm:text-base text-slate-600 dark:text-zinc-300 font-medium">Revenue</span>
+            <span className="font-mono font-bold text-slate-900 dark:text-white text-base sm:text-lg">
               {formatCurrency(result.totalCustomerPayment, currency)}
             </span>
           </div>
 
           {/* Etsy Fees */}
-          <div className="flex items-center justify-between py-2.5 border-b border-slate-100/80 dark:border-zinc-800/80">
-            <span className="text-sm text-slate-500 dark:text-zinc-400 font-medium">Etsy Fees</span>
-            <span className="font-mono font-bold text-orange-600 dark:text-orange-400 text-sm">
+          <div className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-zinc-800">
+            <span className="text-sm sm:text-base text-slate-600 dark:text-zinc-300 font-medium">Etsy Fees</span>
+            <span className="font-mono font-bold text-orange-600 dark:text-orange-400 text-base sm:text-lg">
               -{formatCurrency(result.totalEtsyFees, currency)}
             </span>
           </div>
 
           {/* Your Costs (Only if physical) */}
           {isPhysical && (
-            <div className="flex items-center justify-between py-2.5 border-b border-slate-100/80 dark:border-zinc-800/80">
-              <span className="text-sm text-slate-500 dark:text-zinc-400 font-medium">Your Costs</span>
-              <span className="font-mono font-bold text-slate-700 dark:text-zinc-300 text-sm">
+            <div className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-zinc-800">
+              <span className="text-sm sm:text-base text-slate-600 dark:text-zinc-300 font-medium">Your Costs</span>
+              <span className="font-mono font-bold text-slate-700 dark:text-zinc-300 text-base sm:text-lg">
                 -{formatCurrency(result.totalSellerCosts, currency)}
               </span>
             </div>
           )}
 
           {/* Net Profit Summary */}
-          <div className={`flex items-center justify-between py-3 px-3.5 rounded-xl mt-2 ${
+          <div className={`flex items-center justify-between py-3.5 px-4 rounded-xl mt-3 ${
             isProfitable
-              ? 'bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-800/60'
+              ? 'bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800/80'
               : isLoss
-              ? 'bg-rose-50 dark:bg-rose-950/40 border border-rose-200/60 dark:border-rose-800/60'
-              : 'bg-slate-50 dark:bg-zinc-800/60 border border-slate-200/60 dark:border-zinc-700/60'
+              ? 'bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-800/80'
+              : 'bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700'
           }`}>
-            <span className="text-sm font-bold text-slate-900 dark:text-white">Net Profit</span>
+            <span className="text-base font-bold text-slate-900 dark:text-white">Net Profit</span>
             <span
-              className={`font-mono text-lg font-black ${
+              className={`font-mono text-xl sm:text-2xl font-black ${
                 isProfitable
                   ? 'text-emerald-700 dark:text-emerald-400'
                   : isLoss
@@ -272,13 +271,13 @@ export function ResultsDashboard({
 
         {/* 3. PHYSICAL DETAILED BREAKDOWN */}
         {isPhysical && result.itemizedCosts.length > 0 && (
-          <div className="space-y-2">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-zinc-400">Itemized Costs</p>
-            <div className="space-y-1.5 p-3 rounded-xl bg-slate-50/80 dark:bg-zinc-800/60 border border-slate-200/60 dark:border-zinc-700/60">
+          <div className="space-y-2.5">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">Itemized Costs</p>
+            <div className="space-y-2 p-3.5 rounded-xl bg-slate-50 dark:bg-zinc-800/60 border border-slate-200/70 dark:border-zinc-700/70">
               {result.itemizedCosts.map((cost) => (
-                <div key={cost.id} className="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400">
+                <div key={cost.id} className="flex items-center justify-between text-sm text-slate-600 dark:text-zinc-300">
                   <span>{cost.name}</span>
-                  <span className="font-mono font-semibold text-slate-800 dark:text-zinc-200">
+                  <span className="font-mono font-semibold text-slate-900 dark:text-zinc-100">
                     -{formatCurrency(cost.amount, currency)}
                   </span>
                 </div>
@@ -293,39 +292,39 @@ export function ResultsDashboard({
             type="button"
             id="toggle-fee-breakdown-btn"
             onClick={() => setShowFeeBreakdown(!showFeeBreakdown)}
-            className="w-full flex items-center justify-between py-1.5 text-xs font-bold text-slate-600 dark:text-zinc-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors cursor-pointer select-none group"
+            className="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-700 dark:text-zinc-200 hover:text-orange-600 dark:hover:text-orange-400 transition-colors cursor-pointer select-none group"
           >
-            <span className="flex items-center gap-1.5">
-              <Lock className="h-3 w-3 text-slate-400 dark:text-zinc-500 group-hover:text-orange-500 transition-colors" />
+            <span className="flex items-center gap-2">
+              <Lock className="h-3.5 w-3.5 text-slate-400 dark:text-zinc-500 group-hover:text-orange-500 transition-colors" />
               Etsy Fee Breakdown
             </span>
-            <div className="flex items-center gap-1 text-[10px] font-mono text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/50 px-2 py-0.5 rounded-full border border-orange-200/60 dark:border-orange-800/60">
+            <div className="flex items-center gap-1.5 text-xs font-mono text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/50 px-2.5 py-1 rounded-full border border-orange-200 dark:border-orange-800 font-bold">
               -{formatCurrency(result.totalEtsyFees, currency)}
               {showFeeBreakdown ? (
-                <ChevronUp className="h-3 w-3" />
+                <ChevronUp className="h-3.5 w-3.5" />
               ) : (
-                <ChevronDown className="h-3 w-3" />
+                <ChevronDown className="h-3.5 w-3.5" />
               )}
             </div>
           </button>
 
           {showFeeBreakdown && (
-            <div className="mt-3 space-y-2 p-3.5 rounded-xl bg-gradient-to-b from-slate-50 to-slate-50/50 dark:from-zinc-800/80 dark:to-zinc-800/40 border border-slate-200/60 dark:border-zinc-700/60 animate-in fade-in slide-in-from-top-1 duration-150">
+            <div className="mt-3 space-y-2.5 p-4 rounded-xl bg-gradient-to-b from-slate-50 to-slate-50/50 dark:from-zinc-800/80 dark:to-zinc-800/40 border border-slate-200 dark:border-zinc-700 animate-in fade-in slide-in-from-top-1 duration-150">
               {result.itemizedFees.map((fee) => (
-                <div key={fee.id} className="flex items-center justify-between text-xs">
+                <div key={fee.id} className="flex items-center justify-between text-xs sm:text-sm">
                   <div>
-                    <span className="text-slate-700 dark:text-zinc-200 font-medium">{fee.name}</span>
-                    <span className="text-slate-400 dark:text-zinc-500 ml-1.5 font-mono">({fee.rateDescription})</span>
+                    <span className="text-slate-800 dark:text-zinc-200 font-semibold">{fee.name}</span>
+                    <span className="text-slate-400 dark:text-zinc-500 ml-2 font-mono">({fee.rateDescription})</span>
                   </div>
-                  <span className="font-mono font-semibold text-slate-900 dark:text-white">
+                  <span className="font-mono font-bold text-slate-900 dark:text-white">
                     -{formatCurrency(fee.amount, currency)}
                   </span>
                 </div>
               ))}
               
-              <div className="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-zinc-700 font-bold">
-                <span className="text-xs text-slate-800 dark:text-zinc-200">Total Etsy Fees</span>
-                <span className="font-mono text-sm text-orange-600 dark:text-orange-400">
+              <div className="flex items-center justify-between pt-2.5 border-t border-slate-200 dark:border-zinc-700 font-bold text-sm sm:text-base">
+                <span className="text-slate-900 dark:text-white">Total Etsy Fees</span>
+                <span className="font-mono text-orange-600 dark:text-orange-400 font-black">
                   -{formatCurrency(result.totalEtsyFees, currency)}
                 </span>
               </div>

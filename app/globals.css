@@ -12,9 +12,10 @@
     box-sizing: border-box;
   }
 
-
   html {
     scroll-behavior: smooth;
+    font-size: 16.5px;
+    letter-spacing: -0.01em;
   }
 
   body {
@@ -209,6 +210,52 @@ div[class*="nextjs-portal"],
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+/* ══════════════════════════════════════════════════
+   ANIMATED ORANGE BORDERS & SECTION DIVIDERS
+══════════════════════════════════════════════════ */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-orange-border {
+  background: linear-gradient(90deg, #ea580c, #f97316, #fbbf24, #f59e0b, #ea580c);
+  background-size: 250% 250%;
+  animation: gradientShift 4s ease infinite;
+}
+
+.animated-section-divider {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent 0%, #ea580c 20%, #f97316 40%, #fbbf24 50%, #f97316 60%, #ea580c 80%, transparent 100%);
+  background-size: 200% 100%;
+  animation: gradientShift 3.5s ease-in-out infinite;
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.45);
+}
+
+.animated-card-border {
+  position: relative;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.5), rgba(245, 158, 11, 0.3), rgba(234, 88, 12, 0.6));
+  padding: 2px;
+  background-size: 250% 250%;
+  animation: gradientShift 5s ease infinite;
+}
+
+.animated-card-border > div {
+  border-radius: calc(1.25rem - 2px);
+}
+
 
 
 
