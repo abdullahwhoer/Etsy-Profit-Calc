@@ -87,7 +87,7 @@ export function ResultsDashboard({
           HERO NET PROFIT PANEL
       ══════════════════════════════════ */}
       <div
-        className={`relative p-6 sm:p-7 overflow-hidden transition-colors duration-300 ${
+        className={`relative p-4 sm:p-7 overflow-hidden transition-colors duration-300 ${
           isLoss
             ? 'bg-gradient-to-br from-rose-950 via-rose-900 to-zinc-950 text-white'
             : 'bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-white'
@@ -103,22 +103,22 @@ export function ResultsDashboard({
 
         <div className="relative">
           {/* Label + Copy button */}
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2.5">
-              <span className="text-sm font-bold uppercase tracking-wider text-zinc-300">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-zinc-300">
                 Net Profit
               </span>
-              <span className="font-cursive text-amber-300 font-bold text-base tracking-wide -rotate-1">
+              <span className="font-cursive text-amber-300 font-bold text-sm sm:text-base tracking-wide -rotate-1">
                 Live ✨
               </span>
               {isProfitable && (
-                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-1 rounded-full">
+                <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full">
                   <TrendingUp className="h-3 w-3" />
                   Profitable
                 </span>
               )}
               {isLoss && (
-                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-rose-400 bg-rose-500/15 border border-rose-500/30 px-2.5 py-1 rounded-full">
+                <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-bold text-rose-400 bg-rose-500/15 border border-rose-500/30 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full">
                   <TrendingDown className="h-3 w-3" />
                   Loss
                 </span>
@@ -129,7 +129,7 @@ export function ResultsDashboard({
               type="button"
               id="copy-summary-btn"
               onClick={handleCopySummary}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-150 cursor-pointer border border-white/15"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-150 cursor-pointer border border-white/15"
               title="Copy estimate summary"
             >
               {copied ? (
@@ -147,9 +147,9 @@ export function ResultsDashboard({
           </div>
 
           {/* Large Net Profit Amount */}
-          <div className="mt-5 mb-4">
+          <div className="mt-4 sm:mt-5 mb-3 sm:mb-4">
             <span
-              className={`text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight font-mono leading-none ${
+              className={`text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight font-mono leading-none break-all ${
                 isProfitable
                   ? 'text-emerald-400 profit-glow'
                   : isLoss
@@ -162,9 +162,9 @@ export function ResultsDashboard({
           </div>
 
           {/* Profit Margin Badge + Fee Rate */}
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
             <span
-              className={`inline-flex items-center gap-1.5 text-sm font-bold px-3.5 py-1.5 rounded-full border font-mono ${marginBg} ${marginColor}`}
+              className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border font-mono ${marginBg} ${marginColor}`}
             >
               {isProfitable ? (
                 <TrendingUp className="h-3.5 w-3.5" />
@@ -175,7 +175,7 @@ export function ResultsDashboard({
               )}
               {formatPercentClean(result.profitMargin)} margin
             </span>
-            <span className="text-sm text-zinc-300 font-mono">
+            <span className="text-xs sm:text-sm text-zinc-300 font-mono">
               {formatPercentClean(result.effectiveFeeRate)} in fees
             </span>
           </div>
@@ -216,7 +216,7 @@ export function ResultsDashboard({
       {/* ══════════════════════════════════
           SUMMARY PANEL (Clean, Larger Fonts & Generous Spacing)
       ══════════════════════════════════ */}
-      <div className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md p-6 sm:p-8 space-y-6 border-t border-slate-100 dark:border-zinc-800 transition-colors duration-200">
+      <div className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md p-4 sm:p-7 lg:p-8 space-y-4 sm:space-y-6 border-t border-slate-100 dark:border-zinc-800 transition-colors duration-200">
 
         {/* Quick Summary */}
         <div className="space-y-1.5">

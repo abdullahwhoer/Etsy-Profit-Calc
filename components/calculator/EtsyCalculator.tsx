@@ -13,6 +13,7 @@ import { formatCurrency, formatPercentClean } from '@/lib/utils';
 import { ArrowRight, Download, Package, TrendingUp } from 'lucide-react';
 
 import { CountryFeesChartSection } from './CountryFeesChartSection';
+import { FreeListingsSection } from './FreeListingsSection';
 
 // Production SaaS Footer
 import { Footer } from './Footer';
@@ -70,7 +71,7 @@ export function EtsyCalculator() {
   const isDigital = input.productType === 'digital';
 
   return (
-    <div className="min-h-screen pb-16 lg:pb-0">
+    <div className="min-h-screen pb-24 lg:pb-0">
 
       {/* Decorative background orbs (Warm Etsy Orange Theme) */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
@@ -87,25 +88,25 @@ export function EtsyCalculator() {
       />
 
       {/* Main Container */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 space-y-6">
+      <main className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 pt-4 sm:pt-8 md:pt-10 space-y-4 sm:space-y-6">
         {/* Compact Hero */}
         <HeroSection />
 
         {/* 1. TOP SEGMENTED CONTROL: PRODUCT TYPE */}
-        <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm rounded-2xl border border-white/90 dark:border-zinc-800 p-2.5 shadow-sm card-shadow transition-colors duration-200">
-          <div className="grid grid-cols-2 gap-3">
+        <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm rounded-2xl border border-white/90 dark:border-zinc-800 p-1.5 sm:p-2 shadow-xs card-shadow transition-colors duration-200">
+          <div className="grid grid-cols-2 gap-1.5 sm:gap-3">
             <button
               type="button"
               id="btn-digital-product"
               onClick={() => handleProductTypeChange('digital')}
-              className={`relative flex items-center justify-center gap-3 py-4 px-5 rounded-xl text-base sm:text-lg font-bold transition-all duration-200 cursor-pointer select-none overflow-hidden ${
+              className={`relative flex items-center justify-center gap-1.5 sm:gap-2.5 py-2.5 sm:py-3.5 px-2 sm:px-5 rounded-xl text-xs sm:text-base md:text-lg font-bold transition-all duration-200 cursor-pointer select-none overflow-hidden ${
                 isDigital
-                  ? 'bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 text-white shadow-lg shadow-orange-500/25'
-                  : 'bg-transparent text-slate-600 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-zinc-800/60'
+                  ? 'bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 text-white shadow-md sm:shadow-lg shadow-orange-500/25'
+                  : 'bg-transparent text-slate-600 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60'
               }`}
             >
-              <Download className={`h-5 w-5 ${isDigital ? 'text-white' : ''}`} />
-              <span>Digital Product</span>
+              <Download className={`h-4 w-4 sm:h-5 sm:w-5 shrink-0 ${isDigital ? 'text-white' : ''}`} />
+              <span className="truncate">Digital Product</span>
               {isDigital && (
                 <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 animate-[shine_2s_ease_infinite]" />
               )}
@@ -115,14 +116,14 @@ export function EtsyCalculator() {
               type="button"
               id="btn-physical-product"
               onClick={() => handleProductTypeChange('physical')}
-              className={`relative flex items-center justify-center gap-3 py-4 px-5 rounded-xl text-base sm:text-lg font-bold transition-all duration-200 cursor-pointer select-none overflow-hidden ${
+              className={`relative flex items-center justify-center gap-1.5 sm:gap-2.5 py-2.5 sm:py-3.5 px-2 sm:px-5 rounded-xl text-xs sm:text-base md:text-lg font-bold transition-all duration-200 cursor-pointer select-none overflow-hidden ${
                 !isDigital
-                  ? 'bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 text-white shadow-lg shadow-orange-500/25'
-                  : 'bg-transparent text-slate-600 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-zinc-800/60'
+                  ? 'bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 text-white shadow-md sm:shadow-lg shadow-orange-500/25'
+                  : 'bg-transparent text-slate-600 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60'
               }`}
             >
-              <Package className={`h-5 w-5 ${!isDigital ? 'text-white' : ''}`} />
-              <span>Physical Product</span>
+              <Package className={`h-4 w-4 sm:h-5 sm:w-5 shrink-0 ${!isDigital ? 'text-white' : ''}`} />
+              <span className="truncate">Physical Product</span>
               {!isDigital && (
                 <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 animate-[shine_2s_ease_infinite]" />
               )}
@@ -166,7 +167,10 @@ export function EtsyCalculator() {
           ))}
         </div>
 
-        {/* 3. NEW SECTION: ETSY FEES COMPARISON CHART & TABLE (US, UK, Canada, Pakistan, India, etc.) */}
+        {/* 3. FREE ETSY LISTING CREDITS & PROMO REFERRAL SECTION */}
+        <FreeListingsSection />
+
+        {/* 4. ETSY FEES COMPARISON CHART & TABLE (US, UK, Canada, Pakistan, India, etc.) */}
         <CountryFeesChartSection />
       </main>
 
@@ -187,7 +191,7 @@ export function EtsyCalculator() {
 
 
       {/* Mobile Sticky Summary Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 glass-dark text-white border-t border-white/10 dark:border-zinc-800 p-3 px-4 shadow-2xl flex items-center justify-between">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 glass-dark text-white border-t border-white/10 dark:border-zinc-800 p-2.5 sm:p-3 px-3.5 sm:px-4 pb-[calc(0.65rem+env(safe-area-inset-bottom,0px))] shadow-2xl flex items-center justify-between">
         <div>
           <span className="text-[10px] font-bold text-slate-400 dark:text-zinc-400 uppercase tracking-wider block">
             Net Profit

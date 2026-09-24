@@ -23,11 +23,11 @@ interface CalculatorFormProps {
 }
 
 /** Shared label style (Large, Clean & Legible) */
-const labelCls = 'text-sm font-bold text-slate-800 dark:text-zinc-100 block mb-2';
+const labelCls = 'text-xs sm:text-sm font-bold text-slate-800 dark:text-zinc-100 block mb-1.5 sm:mb-2';
 
 /** Shared input style (Comfortable height & font size) */
 const inputCls =
-  'h-12 w-full rounded-xl border border-slate-200 dark:border-zinc-700/80 bg-white/90 dark:bg-zinc-800/90 px-3.5 text-base font-semibold text-slate-900 dark:text-white focus:outline-none input-field transition-smooth placeholder:text-slate-300 dark:placeholder:text-zinc-500';
+  'h-11 sm:h-12 w-full rounded-xl border border-slate-200 dark:border-zinc-700/80 bg-white/90 dark:bg-zinc-800/90 px-3 sm:px-3.5 text-sm sm:text-base font-semibold text-slate-900 dark:text-white focus:outline-none input-field transition-smooth placeholder:text-slate-300 dark:placeholder:text-zinc-500';
 
 /** Shared section divider */
 function SectionDivider({
@@ -93,7 +93,7 @@ export function CalculatorForm({
   };
 
   return (
-    <div className="bg-white/85 dark:bg-zinc-900/85 backdrop-blur-sm rounded-2xl border border-white/90 dark:border-zinc-800/80 p-5 sm:p-7 card-shadow space-y-7 transition-colors duration-200">
+    <div className="bg-white/85 dark:bg-zinc-900/85 backdrop-blur-sm rounded-2xl border border-white/90 dark:border-zinc-800/80 p-3.5 sm:p-6 lg:p-7 card-shadow space-y-5 sm:space-y-7 transition-colors duration-200">
       
       {/* ═══════════════════════════════════════
           1. PRICING SECTION
@@ -112,7 +112,7 @@ export function CalculatorForm({
               Regular Price
             </label>
             <div className="relative flex items-center">
-              <span className="absolute left-3.5 text-slate-400 dark:text-zinc-400 text-base font-bold pointer-events-none select-none">
+              <span className="absolute left-3 sm:left-3.5 text-slate-400 dark:text-zinc-400 text-sm sm:text-base font-bold pointer-events-none select-none">
                 {currencySymbol}
               </span>
               <input
@@ -126,18 +126,18 @@ export function CalculatorForm({
                   const v = parseFloat(e.target.value);
                   onInputChange('regularPrice', isNaN(v) || v < 0 ? 0 : v);
                 }}
-                className={`${inputCls} pl-9 pr-3.5`}
+                className={`${inputCls} pl-8 sm:pl-9 pr-3 sm:pr-3.5`}
               />
             </div>
           </div>
 
           {/* Sale Discount */}
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <label htmlFor="discount-input" className="text-sm font-bold text-slate-800 dark:text-zinc-100">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <label htmlFor="discount-input" className="text-xs sm:text-sm font-bold text-slate-800 dark:text-zinc-100">
                 Sale Discount
               </label>
-              <span className="text-xs text-slate-500 dark:text-zinc-400 font-mono bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-semibold">0–100%</span>
+              <span className="text-[11px] sm:text-xs text-slate-500 dark:text-zinc-400 font-mono bg-slate-100 dark:bg-zinc-800 px-2 py-0.5 rounded font-semibold">0–100%</span>
             </div>
             <div className="relative flex items-center">
               <input
@@ -152,9 +152,9 @@ export function CalculatorForm({
                   const v = parseFloat(e.target.value);
                   onInputChange('discount', isNaN(v) ? 0 : Math.min(100, Math.max(0, v)));
                 }}
-                className={`${inputCls} px-3.5 pr-9`}
+                className={`${inputCls} px-3 sm:px-3.5 pr-8 sm:pr-9`}
               />
-              <span className="absolute right-3.5 text-slate-400 dark:text-zinc-400 text-base font-semibold pointer-events-none select-none">
+              <span className="absolute right-3 sm:right-3.5 text-slate-400 dark:text-zinc-400 text-sm sm:text-base font-semibold pointer-events-none select-none">
                 %
               </span>
             </div>
@@ -162,14 +162,14 @@ export function CalculatorForm({
 
           {/* Calculated Sale Price (Read-only - Green Label) */}
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="text-sm font-bold text-emerald-600 dark:text-emerald-400">Sale Price</label>
-              <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200/80 dark:border-emerald-800/80">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <label className="text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400">Sale Price</label>
+              <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200/80 dark:border-emerald-800/80">
                 <Sparkles className="h-3 w-3 fill-emerald-500 text-emerald-500" />
                 Auto
               </span>
             </div>
-            <div className="h-12 w-full rounded-xl border border-emerald-300/80 dark:border-emerald-700/80 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/50 px-3.5 flex items-center text-base font-black text-emerald-700 dark:text-emerald-300 select-all font-mono shadow-xs">
+            <div className="h-11 sm:h-12 w-full rounded-xl border border-emerald-300/80 dark:border-emerald-700/80 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/50 px-3 sm:px-3.5 flex items-center text-sm sm:text-base font-black text-emerald-700 dark:text-emerald-300 select-all font-mono shadow-xs">
               {formatCurrency(salePrice, input.currency)}
             </div>
           </div>
@@ -209,12 +209,12 @@ export function CalculatorForm({
           {/* Listing Type Toggle */}
           <div>
             <label className={labelCls}>Listing Type</label>
-            <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100/80 dark:bg-zinc-800/80 rounded-xl border border-slate-200/60 dark:border-zinc-700/60 h-12 items-center">
+            <div className="grid grid-cols-2 gap-1.5 sm:gap-2 p-1 bg-slate-100/80 dark:bg-zinc-800/80 rounded-xl border border-slate-200/60 dark:border-zinc-700/60 h-11 sm:h-12 items-center">
               <button
                 type="button"
                 id="listing-type-paid"
                 onClick={() => onInputChange('listingType', 'paid')}
-                className={`h-10 flex items-center justify-center text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`h-9 sm:h-10 flex items-center justify-center text-[11px] sm:text-sm font-bold rounded-lg transition-all duration-200 cursor-pointer px-1 truncate ${
                   input.listingType === 'paid'
                     ? 'bg-white dark:bg-zinc-700 text-slate-900 dark:text-white shadow-sm border border-slate-200/60 dark:border-zinc-600'
                     : 'text-slate-500 dark:text-zinc-400 hover:text-slate-800 dark:hover:text-white'
@@ -226,7 +226,7 @@ export function CalculatorForm({
                 type="button"
                 id="listing-type-free"
                 onClick={() => onInputChange('listingType', 'free')}
-                className={`h-10 flex items-center justify-center text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`h-9 sm:h-10 flex items-center justify-center text-[11px] sm:text-sm font-bold rounded-lg transition-all duration-200 cursor-pointer px-1 truncate ${
                   input.listingType === 'free'
                     ? 'bg-white dark:bg-zinc-700 text-emerald-700 dark:text-emerald-400 shadow-sm border border-emerald-200/60 dark:border-emerald-700/60'
                     : 'text-slate-500 dark:text-zinc-400 hover:text-slate-800 dark:hover:text-white'
@@ -239,23 +239,23 @@ export function CalculatorForm({
         </div>
 
         {/* Offsite Ads Toggle */}
-        <div className="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-amber-50/80 to-orange-50/60 dark:from-amber-950/30 dark:to-orange-950/20 border border-amber-200/80 dark:border-amber-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-3.5 sm:p-5 rounded-xl bg-gradient-to-r from-amber-50/80 to-orange-50/60 dark:from-amber-950/30 dark:to-orange-950/20 border border-amber-200/80 dark:border-amber-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <ExternalLink className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+            <div className="flex items-center gap-2 flex-wrap">
+              <ExternalLink className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
               <span className="text-sm font-bold text-slate-900 dark:text-white">Etsy Offsite Ads</span>
               {input.offsiteAdsEnabled && (
-                <span className="inline-flex items-center gap-1 text-xs font-mono text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/60 px-2.5 py-0.5 rounded-full border border-amber-300 dark:border-amber-800 font-bold">
+                <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-mono text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/60 px-2 py-0.5 rounded-full border border-amber-300 dark:border-amber-800 font-bold">
                   <Lock className="h-3 w-3" /> {(offsiteRate * 100).toFixed(0)}% Read-Only
                 </span>
               )}
             </div>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 pl-6 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 pl-0 sm:pl-6 leading-relaxed">
               Etsy&apos;s locked fee on sales from external Google, Pinterest or social ads
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5 self-start sm:self-auto flex-shrink-0">
+          <div className="flex items-center justify-between sm:justify-start gap-2.5 w-full sm:w-auto flex-shrink-0">
             <div className="inline-flex p-0.5 bg-white/70 dark:bg-zinc-800/80 rounded-xl border border-slate-200/60 dark:border-zinc-700/60 shadow-sm">
               <button
                 type="button"
@@ -488,57 +488,57 @@ export function CalculatorForm({
           4. COMPACT ETSY FEE SUMMARY STRIP
       ═══════════════════════════════════════ */}
       <div className="pt-2 border-t border-slate-100/80 dark:border-zinc-800/80 space-y-3.5">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <span className="font-cursive text-xl sm:text-2xl font-bold text-orange-600 dark:text-orange-400 flex items-center gap-2">
             <span>{country.flag}</span>
             <span>{country.name} Etsy Marketplace Fees</span>
           </span>
-          <span className="flex items-center gap-1 font-mono text-xs text-slate-400 dark:text-zinc-400 bg-slate-50 dark:bg-zinc-800/80 px-2.5 py-1 rounded-lg border border-slate-100 dark:border-zinc-700/80">
+          <span className="flex items-center gap-1 font-mono text-xs text-slate-400 dark:text-zinc-400 bg-slate-50 dark:bg-zinc-800/80 px-2.5 py-1 rounded-lg border border-slate-100 dark:border-zinc-700/80 self-start sm:self-auto">
             <Lock className="h-3 w-3" /> System Rates
           </span>
         </div>
 
-        <div className={`grid grid-cols-1 sm:${country.regulatoryFeeRate ? 'grid-cols-4' : 'grid-cols-3'} gap-3`}>
+        <div className={`grid grid-cols-2 ${country.regulatoryFeeRate ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-2 sm:gap-3`}>
           {/* 1. Transaction Fee */}
-          <div className="p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
-            <span className="text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
+          <div className="p-2.5 sm:p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
+            <span className="text-[11px] sm:text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
               Transaction Fee
             </span>
-            <span className="font-mono font-black text-sm sm:text-base text-slate-900 dark:text-zinc-100">
+            <span className="font-mono font-black text-xs sm:text-base text-slate-900 dark:text-zinc-100">
               {(ETSY_TRANSACTION_FEE_RATE * 100).toFixed(1)}% 🔒
             </span>
           </div>
 
           {/* 2. Payment Processing Fee */}
-          <div className="p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
-            <span className="text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
+          <div className="p-2.5 sm:p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
+            <span className="text-[11px] sm:text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1 truncate">
               Processing ({country.code})
             </span>
-            <span className="font-mono font-black text-sm sm:text-base text-slate-900 dark:text-zinc-100">
+            <span className="font-mono font-black text-xs sm:text-base text-slate-900 dark:text-zinc-100 block truncate">
               {country.paymentProcessingRate}% + {currencySymbol}{country.paymentProcessingFixed.toFixed(2)}
             </span>
           </div>
 
           {/* 3. Listing Fee */}
-          <div className="p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
-            <span className="text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
+          <div className="p-2.5 sm:p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
+            <span className="text-[11px] sm:text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
               Listing Fee
             </span>
-            <span className="font-mono font-black text-sm sm:text-base text-slate-900 dark:text-zinc-100">
+            <span className="font-mono font-black text-xs sm:text-base text-slate-900 dark:text-zinc-100 block truncate">
               {input.listingType === 'free'
                 ? 'FREE ($0.00)'
-                : `${currencySymbol}${country.listingFeeFixed.toFixed(2)} ${country.defaultCurrency}`}{' '}
+                : `${currencySymbol}${country.listingFeeFixed.toFixed(2)}`}{' '}
               🔒
             </span>
           </div>
 
           {/* 4. Regulatory Operating Fee (if applicable) */}
           {country.regulatoryFeeRate && (
-            <div className="p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
-              <span className="text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
+            <div className="p-2.5 sm:p-3.5 rounded-xl bg-slate-50/90 dark:bg-zinc-800/70 border border-slate-200/70 dark:border-zinc-700/70 text-center">
+              <span className="text-[11px] sm:text-xs text-slate-500 dark:text-zinc-400 font-semibold block mb-1">
                 Regulatory Fee
               </span>
-              <span className="font-mono font-black text-sm sm:text-base text-amber-600 dark:text-amber-400">
+              <span className="font-mono font-black text-xs sm:text-base text-amber-600 dark:text-amber-400">
                 {country.regulatoryFeeRate}% 🔒
               </span>
             </div>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { CalculatorLogo } from '@/components/ui/CalculatorLogo';
-import { Calculator, HelpCircle, RotateCcw, Heart } from 'lucide-react';
+import { Calculator, HelpCircle, RotateCcw, Heart, Gift } from 'lucide-react';
 
 interface FooterProps {
   onReset: () => void;
@@ -69,6 +69,19 @@ export function Footer({ onReset, onOpenHowItWorks }: FooterProps) {
                 >
                   <HelpCircle className="h-3.5 w-3.5" />
                   <span>How Etsy Fees Work</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('free-listings-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="inline-flex items-center gap-1.5 text-xs text-orange-600 dark:text-orange-400 font-bold hover:text-orange-700 dark:hover:text-orange-300 transition-colors cursor-pointer"
+                >
+                  <Gift className="h-3.5 w-3.5" />
+                  <span>Get 40 Free Listings</span>
                 </button>
               </li>
               <li>

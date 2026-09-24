@@ -2,15 +2,17 @@ import React from 'react';
 import Image from 'next/image';
 
 interface CalculatorLogoProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'responsive';
   showPulse?: boolean;
+  className?: string;
 }
 
-export function CalculatorLogo({ size = 'md', showPulse = true }: CalculatorLogoProps) {
+export function CalculatorLogo({ size = 'md', showPulse = true, className = '' }: CalculatorLogoProps) {
   const containerClasses = {
-    sm: 'h-9 w-9 p-0.5',
-    md: 'h-11 w-11 p-0.5',
-    lg: 'h-13 w-13 p-0.5',
+    sm: 'h-8 w-8 p-0.5',
+    md: 'h-10 w-10 sm:h-11 sm:w-11 p-0.5',
+    lg: 'h-12 w-12 sm:h-13 sm:w-13 p-0.5',
+    responsive: 'h-8 w-8 sm:h-10 sm:w-10 p-0.5',
   }[size];
 
   return (

@@ -152,11 +152,11 @@ export function EtsyChatbot() {
           1. CIRCLED FLOATING LAUNCHER BUTTON (Bottom Right)
       ══════════════════════════════════════════════ */}
       {!isOpen && (
-        <div className="fixed bottom-5 right-5 z-50 flex items-center group">
+        <div className="fixed bottom-20 sm:bottom-6 right-3 sm:right-6 z-50 flex items-center group">
           
-          {/* Left Hover / Scroll Tooltip Pill */}
+          {/* Left Hover / Scroll Tooltip Pill (Desktop only) */}
           <div
-            className={`mr-2.5 px-2.5 py-1 rounded-xl bg-slate-900/90 dark:bg-zinc-800/90 text-white text-[11px] font-semibold whitespace-nowrap shadow-xl border border-slate-700/60 flex items-center gap-1.5 transition-all duration-300 ${
+            className={`hidden sm:flex mr-2.5 px-2.5 py-1 rounded-xl bg-slate-900/90 dark:bg-zinc-800/90 text-white text-[11px] font-semibold whitespace-nowrap shadow-xl border border-slate-700/60 items-center gap-1.5 transition-all duration-300 ${
               isScrolling
                 ? 'opacity-100 translate-x-0 scale-100'
                 : 'opacity-0 translate-x-2 scale-95 group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100 pointer-events-none'
@@ -198,7 +198,7 @@ export function EtsyChatbot() {
           2. EXPANDABLE SAAS CHATBOT WINDOW
       ══════════════════════════════════════════════ */}
       {isOpen && (
-        <div className="fixed bottom-3 right-3 sm:bottom-5 sm:right-5 z-50 w-[calc(100vw-1.5rem)] sm:w-[400px] h-[540px] max-h-[85vh] bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl rounded-2xl border border-orange-200/80 dark:border-zinc-800 shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 card-shadow-lg">
+        <div className="fixed bottom-16 sm:bottom-6 right-2 sm:right-6 z-50 w-[calc(100vw-1rem)] sm:w-[400px] h-[520px] max-h-[80vh] bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl rounded-2xl border border-orange-200/80 dark:border-zinc-800 shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 card-shadow-lg">
           
           {/* Header */}
           <div className="p-3.5 sm:p-4 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white flex items-center justify-between shadow-md">

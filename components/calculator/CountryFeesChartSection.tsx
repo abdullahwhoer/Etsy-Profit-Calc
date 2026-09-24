@@ -40,19 +40,19 @@ export function CountryFeesChartSection() {
           1. SECTION HEADER (Prominent & Legible)
       ══════════════════════════════════════════════════ */}
       <div className="text-center max-w-3xl mx-auto space-y-3 pt-2">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100/70 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300 text-xs sm:text-sm font-bold shadow-xs">
-          <Globe className="h-4 w-4 text-orange-500" />
+        <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-orange-100/70 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300 text-xs sm:text-sm font-bold shadow-xs">
+          <Globe className="h-4 w-4 text-orange-500 shrink-0" />
           <span>Global Seller Rate Card</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
           Official Etsy Fees{' '}
-          <span className="font-cursive text-4xl sm:text-5xl lg:text-6xl text-orange-600 dark:text-orange-400 font-bold inline-block px-1">
+          <span className="font-cursive text-3xl sm:text-5xl lg:text-6xl text-orange-600 dark:text-orange-400 font-bold inline-block px-1">
             Comparison Chart
           </span>
         </h2>
 
-        <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-300 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-xs sm:text-base text-slate-600 dark:text-zinc-300 leading-relaxed max-w-2xl mx-auto">
           Complete written breakdown of payment processing schedules, marketplace transaction rates, listing renewal fees, and regulatory operating fees across major seller countries.
         </p>
       </div>
@@ -154,7 +154,7 @@ export function CountryFeesChartSection() {
           3. FULL SEARCHABLE COUNTRY COMPARISON TABLE
           Clean, Professional, Avoids Blue Color, Large Typography
       ══════════════════════════════════════════════════ */}
-      <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md rounded-2xl border border-orange-200/60 dark:border-zinc-800 p-5 sm:p-8 card-shadow space-y-6">
+      <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md rounded-2xl border border-orange-200/60 dark:border-zinc-800 p-3.5 sm:p-8 card-shadow space-y-4 sm:space-y-6">
         
         {/* Table Header Controls */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
