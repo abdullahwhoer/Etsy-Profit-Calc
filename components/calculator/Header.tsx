@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { RotateCcw, HelpCircle, Calculator, Sun, Moon, Gift } from 'lucide-react';
+import { RotateCcw, Calculator, Sun, Moon, Gift, FileImage, FolderOpen } from 'lucide-react';
 import { CalculatorLogo } from '@/components/ui/CalculatorLogo';
 
 interface HeaderProps {
   onReset: () => void;
-  onOpenHowItWorks: () => void;
+  onOpenHowItWorks?: () => void;
 }
 
 export function Header({ onReset, onOpenHowItWorks }: HeaderProps) {
@@ -58,11 +58,6 @@ export function Header({ onReset, onOpenHowItWorks }: HeaderProps) {
     setIsMobileMenuOpen(false);
   };
 
-  const handleMobileHowItWorks = () => {
-    setIsMobileMenuOpen(false);
-    onOpenHowItWorks();
-  };
-
   const handleMobileReset = () => {
     setIsMobileMenuOpen(false);
     onReset();
@@ -97,16 +92,6 @@ export function Header({ onReset, onOpenHowItWorks }: HeaderProps) {
             <span>Calculator</span>
           </button>
 
-          {/* How It Works Modal Trigger */}
-          <button
-            type="button"
-            onClick={onOpenHowItWorks}
-            className="inline-flex items-center gap-2 px-3 py-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-zinc-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/80 dark:hover:bg-zinc-800/80 rounded-xl transition-all duration-150 cursor-pointer"
-          >
-            <HelpCircle className="h-4 w-4" />
-            <span>How It Works</span>
-          </button>
-
           {/* Free Listings Referral Button */}
           <button
             type="button"
@@ -117,6 +102,24 @@ export function Header({ onReset, onOpenHowItWorks }: HeaderProps) {
             <Gift className="h-4 w-4 text-orange-500 animate-bounce" />
             <span>Free 40 Listings</span>
           </button>
+
+          {/* Keyword Saver Link */}
+          <a
+            href="/etsy-keyword-saver"
+            className="inline-flex items-center gap-2 px-3 py-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-zinc-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/80 dark:hover:bg-zinc-800/80 rounded-xl transition-all duration-150 cursor-pointer"
+          >
+            <FolderOpen className="h-4 w-4" />
+            <span>Keyword Saver</span>
+          </a>
+
+          {/* Image Checker Link */}
+          <a
+            href="/etsy-image-checker"
+            className="inline-flex items-center gap-2 px-3 py-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-zinc-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50/80 dark:hover:bg-zinc-800/80 rounded-xl transition-all duration-150 cursor-pointer"
+          >
+            <FileImage className="h-4 w-4" />
+            <span>Image Checker</span>
+          </a>
 
           {/* Reset Button */}
           <button
@@ -240,19 +243,31 @@ export function Header({ onReset, onOpenHowItWorks }: HeaderProps) {
               </div>
             </button>
 
-            <button
-              type="button"
-              onClick={handleMobileHowItWorks}
+            <a
+              href="/etsy-keyword-saver"
               className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-800 dark:text-zinc-200 hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
             >
               <div className="p-1.5 rounded-lg bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400">
-                <HelpCircle className="h-4 w-4" />
+                <FolderOpen className="h-4 w-4" />
               </div>
               <div className="text-left">
-                <span className="block font-bold">How Etsy Fees Work</span>
-                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">Breakdown of 2026 rates & rules</span>
+                <span className="block font-bold">Keyword Saver</span>
+                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">Private keyword vault & organizer</span>
               </div>
-            </button>
+            </a>
+
+            <a
+              href="/etsy-image-checker"
+              className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-800 dark:text-zinc-200 hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+            >
+              <div className="p-1.5 rounded-lg bg-sky-100 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400">
+                <FileImage className="h-4 w-4" />
+              </div>
+              <div className="text-left">
+                <span className="block font-bold">Image Checker</span>
+                <span className="text-[11px] text-slate-500 dark:text-zinc-400 font-normal">Check Etsy listing image sizes</span>
+              </div>
+            </a>
 
             <button
               type="button"

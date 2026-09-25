@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { CalculatorLogo } from '@/components/ui/CalculatorLogo';
-import { Calculator, HelpCircle, RotateCcw, Heart, Gift } from 'lucide-react';
+import { Calculator, HelpCircle, RotateCcw, Heart, Gift, FileImage } from 'lucide-react';
 
 interface FooterProps {
   onReset: () => void;
@@ -83,6 +83,15 @@ export function Footer({ onReset, onOpenHowItWorks }: FooterProps) {
                   <Gift className="h-3.5 w-3.5" />
                   <span>Get 40 Free Listings</span>
                 </button>
+              </li>
+              <li>
+                <a
+                  href="/etsy-image-checker"
+                  className="inline-flex items-center gap-1.5 text-xs text-slate-600 dark:text-zinc-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                >
+                  <FileImage className="h-3.5 w-3.5" />
+                  <span>Image Checker</span>
+                </a>
               </li>
               <li>
                 <button

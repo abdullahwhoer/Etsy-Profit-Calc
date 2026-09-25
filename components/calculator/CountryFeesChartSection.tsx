@@ -2,13 +2,14 @@
 
 import React, { useState } from 'react';
 import { COUNTRY_FEES, ETSY_TRANSACTION_FEE_RATE } from '@/lib/etsy/fees';
-import { Globe, Search, Lock, Info, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { Globe, Search, Lock, Info, ShieldCheck, Zap, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 
 // Focus countries highlighted specifically
-const FEATURED_COUNTRY_CODES = ['US', 'GB', 'CA', 'PK', 'IN'];
+const FEATURED_COUNTRY_CODES = ['US', 'GB', 'CA', 'PK'];
 
 export function CountryFeesChartSection() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isExpanded, setIsExpanded] = useState(false);
 
   // Filter countries based on search input
   const filteredCountries = COUNTRY_FEES.filter(
@@ -17,6 +18,10 @@ export function CountryFeesChartSection() {
       c.code.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
       c.defaultCurrency.toLowerCase().includes(searchQuery.toLowerCase().trim())
   );
+
+  const displayedCountries = searchQuery.trim() !== '' || isExpanded
+    ? filteredCountries
+    : filteredCountries.slice(0, 4);
 
   const featuredCountries = COUNTRY_FEES.filter((c) =>
     FEATURED_COUNTRY_CODES.includes(c.code)
@@ -72,7 +77,7 @@ export function CountryFeesChartSection() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {featuredCountries.map((country) => (
             <div
               key={country.code}
@@ -194,8 +199,8 @@ export function CountryFeesChartSection() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-zinc-800">
-              {filteredCountries.length > 0 ? (
-                filteredCountries.map((country) => {
+              {displayedCountries.length > 0 ? (
+                displayedCountries.map((country) => {
                   const isFeatured = FEATURED_COUNTRY_CODES.includes(country.code);
                   return (
                     <tr
@@ -260,6 +265,29 @@ export function CountryFeesChartSection() {
             </tbody>
           </table>
         </div>
+
+        {/* Expand / Collapse Button */}
+        {searchQuery.trim() === '' && filteredCountries.length > 4 && (
+          <div className="flex justify-center pt-1">
+            <button
+              type="button"
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-orange-100/80 hover:bg-orange-200/80 dark:bg-zinc-800 dark:hover:bg-zinc-700/80 text-orange-700 dark:text-orange-300 font-bold text-xs sm:text-sm border border-orange-200 dark:border-zinc-700 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md"
+            >
+              {isExpanded ? (
+                <>
+                  <span>Show Less Countries</span>
+                  <ChevronUp className="w-4 h-4 text-orange-500" />
+                </>
+              ) : (
+                <>
+                  <span>Show All {COUNTRY_FEES.length} Countries</span>
+                  <ChevronDown className="w-4 h-4 text-orange-500" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
 
         {/* ══════════════════════════════════════════════════
             4. KEY ETSY RULES EXPLANATION BANNER
